@@ -1,7 +1,7 @@
 <!--
  * @Author: siwenfeng
  * @Date: 2020-06-12 16:20:48
- * @LastEditTime: 2020-06-16 19:48:49
+ * @LastEditTime: 2020-06-16 20:05:34
  * @Description: this is ....
 -->
 <template>
@@ -92,7 +92,7 @@ export default {
   methods: {
     $_isMobile() {
       const { body } = document;
-      const WIDTH = 768; // refer to Bootstrap's responsive design
+      const WIDTH = 992; // refer to Bootstrap's responsive design
       const rect = body.getBoundingClientRect();
       return rect.width - 1 < WIDTH;
     },

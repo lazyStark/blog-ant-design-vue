@@ -1,13 +1,13 @@
 <!--
  * @Author: siwenfeng
  * @Date: 2020-06-16 17:30:51
- * @LastEditTime: 2020-06-16 19:36:17
+ * @LastEditTime: 2020-06-16 20:11:19
  * @Description: this is ....
 -->
 <template>
   <div class="drawer-wrapper">
     <div tabindex="-1" class="drawer drawer-left" :class="{'drawer-open': isOpen}">
-      <div class="drawer-mask" />
+      <div class="drawer-mask" @click="closeBtn" />
       <div :style="transformObj" class="drawer-content-wrapper">
         <div class="drawer-content">
           <a-menu class="aside-container menu-site" mode="inline" :inline-indent="40">
@@ -40,6 +40,17 @@ export default {
     }
   },
   methods: {
+    closeBtn() {
+      this.isOpen = false;
+      const app = document.getElementById("app");
+      this.resetLeftBar(app);
+    },
+    resetLeftBar(app) {
+      document.body.style.overflow = null
+      document.body.style.position = null
+      document.body.style.width = null;
+      app.style.transform = null;
+    },
     toogleBtn() {
       this.isOpen = !this.isOpen;
       const app = document.getElementById("app");
@@ -50,10 +61,7 @@ export default {
         document.body.style.width = "calc(100% - 17px)";
         app.style.transform = `translateX(${width}px)`;
       } else {
-        document.body.style.overflow = null
-        document.body.style.position = null
-        document.body.style.width = null;
-        app.style.transform = null;
+        this.resetLeftBar(app);
       }
     }
   }
